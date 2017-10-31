@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Animated } from "react-native";
 import { loadingParams, createRepeatingFadeAnimation } from '../Config/anime'
-import CommentsScreen from './Comments'
+import CommentsScreen from './CommentsScreen'
 import CardScreen from './CardScreen'
 import { removeHTML } from "../Config/helprs";
 
@@ -31,7 +31,7 @@ class LoadingComment extends React.Component {
       <View style={styles.comment}>
         <CardScreen>
           <View style={styles.commentContainer}>
-          
+
             <Animated.View 
               style={StyleSheet.flatten([styles.loadingCommentText, { opacity: this.state.fadeAnim } ])}
             />
@@ -73,6 +73,48 @@ class LoadingComment extends React.Component {
   }
 }
 
+class CommentScreen extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      showSubComments: false;
+    }
+  }
+
+  render(){
+    const { data } = this.props;
+    return(
+      <View style={styles.comment}>
+        <Card bigShadow={(data.comments && data.comments.length > 0 && !this.state.showSubcomments) || false} onPress={() => {
+          this.setState({
+            showSubcomments: !this.state.showSubcomments
+          });
+        }}>
+          <View style={styles.commentContainer}>
+            <Text style={styles.commentText}>{removeHTML(data.content)}</Text>
+            <View style={styles.info}>
+              <View style={styles.infoContainer}>
+                <Text style={styles.infoText}>{data.time_ago}</Text>
+              </View>
+              <View style={styles.infoContainer}>
+                <Text style={styles.infoText}>{data.user}</Text>
+              </View>
+              <View style={styles.infoContainer}>
+                <Text style={styles.infoText}>
+                  {`${data.comments.length} comments`}
+                </Text>
+              </View>
+            </View>
+          </View>
+        </Card>
+        {data.comments && data.comments.length > 0 && this.state.showSubcomments && <Comments item={data} />}
+      </View>
+    )
+  }
+}
+
+export { LoadingComment };
+export default CommentScreen;
 
 const styles = StyleSheet.create({
   commentContainer: {
