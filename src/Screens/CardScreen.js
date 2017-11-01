@@ -19,7 +19,7 @@ const CardScreen = ({ onPress, children, bigShadow }) => {
   )
 }
 
-const styles = StyleSheetList({
+const styles = StyleSheet.create({
 touchable: {
     marginTop: 5,
     borderRadius: 5,
@@ -45,4 +45,4 @@ touchable: {
   }
 })
 
-export default Card;
+export default CardScreen;

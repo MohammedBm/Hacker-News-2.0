@@ -1,13 +1,13 @@
 import React from "react";
-import { ScrollView , StyleSheet, View } from "react-native";
+import { ScrollView as SV, StyleSheet, View } from "react-native";
 
 const ScrollView = ({ children, ...rest }) => {
-  retunr(
-    <ScrollView style={styles.ScrollView} {...rest}> 
-      <View style={{marginBottom:10}}> {children}</View>
-    </ScrollView>
-  )
-}
+  return (
+    <SV style={styles.scrollView} {...rest}>
+      <View style={{ marginBottom: 10 }}>{children}</View>
+    </SV>
+  );
+};
 
 const styles = StyleSheet.create({
   scrollView: {

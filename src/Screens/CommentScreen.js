@@ -77,7 +77,7 @@ class CommentScreen extends React.Component {
   constructor(){
     super();
     this.state = {
-      showSubComments: false;
+      showSubComments: false
     }
   }
 
@@ -85,7 +85,7 @@ class CommentScreen extends React.Component {
     const { data } = this.props;
     return(
       <View style={styles.comment}>
-        <Card bigShadow={(data.comments && data.comments.length > 0 && !this.state.showSubcomments) || false} onPress={() => {
+        <CardScreen bigShadow={(data.comments && data.comments.length > 0 && !this.state.showSubcomments) || false} onPress={() => {
           this.setState({
             showSubcomments: !this.state.showSubcomments
           });
@@ -106,7 +106,7 @@ class CommentScreen extends React.Component {
               </View>
             </View>
           </View>
-        </Card>
+        </CardScreen>
         {data.comments && data.comments.length > 0 && this.state.showSubcomments && <Comments item={data} />}
       </View>
     )

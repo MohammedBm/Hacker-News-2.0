@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Animated } from "react-native";
-import CommentScreen , { LoadingComment } from "./comment.js";
+import CommentScreen , { LoadingComment } from "./CommentScreen";
 
 const LoadingComments = () => {
   return(
