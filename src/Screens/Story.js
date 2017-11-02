@@ -73,7 +73,7 @@ class Story extends React.Component {
           />
         }
       >
-        <CardSceen>
+        <CardScreen>
           <View style={styles.pointsContainer}>
             <Text style={styles.points}>{story.points || "0"}</Text>
           </View>
@@ -99,7 +99,7 @@ class Story extends React.Component {
               </View>
             </View>
           </View>
-        </CardSceen>
+        </CardScreen>
         <CommentsScreen
           loading={this.state.refreshing}
           item={story && story.content && story.content.data}

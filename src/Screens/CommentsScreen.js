@@ -28,7 +28,7 @@ class CommentsScreen extends React.Component {
     }
   }
 
-  sprint = () => {
+  spring = () => {
     this.state.springValue.setValue(0.9);
     Animated.spring(this.state.springValue, {
       toValue: 1,
@@ -38,8 +38,8 @@ class CommentsScreen extends React.Component {
 
   componentDidMount() {
     this.spring();
-
   }
+
   render(){
     if (this.props.loading) return <LoadingComments />;
     else if (this.props.item && this.props.item.comments) {
